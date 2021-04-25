@@ -14,6 +14,10 @@ config/name="Dance Of Bullets"
 run/main_scene="res://Scenes/maingame.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Fade="*res://Scenes/Fade.tscn"
+
 [display]
 
 window/size/width=1920

@@ -82,7 +82,7 @@ input = "right"
 
 [node name="girl" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 250 )
-frame = 4
+frame = 3
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="girl"]
 
@@ -101,6 +101,7 @@ wait_time = 0.5
 autostart = true
 
 [connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
+[connection signal="finished" from="Conductor" to="." method="_on_Conductor_finished"]
 [connection signal="measure" from="Conductor" to="." method="_on_Conductor_measure"]
 [connection signal="input_event" from="girl/KinematicBody2D" to="." method="_on_KinematicBody2D_input_event"]
 [connection signal="area_entered" from="girl/Area2D" to="." method="_on_Area2D_area_entered"]

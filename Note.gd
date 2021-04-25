@@ -47,17 +47,36 @@ func _ready():
 
 func initialize(lane):
 	if lane == 0:
-		$AnimatedSprite.play("1")
+		if !Fade.scene:
+			$AnimatedSprite.play("1")
+			$bos.disabled = true
+			$bos2.disabled = true
+		else: 
+			$AnimatedSprite.play("bl")
+			$bos.disabled = false
+			$bos2.disabled = false
 		position = LEFT_LANE_SPAWN
 		speed = DIST_TO_TARGET_LEFT / time
 		left = true
 	elif lane == 1:
-		$AnimatedSprite.play("3")
+		if !Fade.scene:
+			$AnimatedSprite.play("3")
+
+		else: 
+			$AnimatedSprite.play("2")
+
 		position = CENTRE_LANE_SPAWN
 		speed = DIST_TO_TARGET_DOWN / time
 		down = true
 	elif lane == 2:
-		$AnimatedSprite.play("4")
+		if !Fade.scene:
+			$AnimatedSprite.play("4")
+			$bos.disabled = true
+			$bos2.disabled = true
+		else: 
+			$AnimatedSprite.play("br")
+			$bos.disabled = false
+			$bos2.disabled = false
 		position = RIGHT_LANE_SPAWN
 		speed = DIST_TO_TARGET_RIGHT / time
 		right = true
@@ -90,11 +109,23 @@ func _physics_process(delta):
 func destroy(lane):
 	lame = lane
 	if lane =="left":
-		$AnimatedSprite.play("1d")
+		if !Fade.scene:
+			$AnimatedSprite.play("1d")
+
+		else: 
+			$AnimatedSprite.play("bld")
+
 	if lane =="up":
-		$AnimatedSprite.play("3d")
+		if !Fade.scene:
+			$AnimatedSprite.play("3d")
+		else: $AnimatedSprite.play("2d")
 	if lane =="right":
-		$AnimatedSprite.play("4d")
+		if !Fade.scene:
+			$AnimatedSprite.play("4d")
+
+		else: 
+			$AnimatedSprite.play("brd")
+
 	hit = true
 	$Timer.start()
 

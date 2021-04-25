@@ -21,6 +21,7 @@ signal measure(position)
 
 func _ready():
 	sec_per_beat = 0.5
+	
 
 
 func _physics_process(_delta):

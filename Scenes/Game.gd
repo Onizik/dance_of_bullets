@@ -1,13 +1,5 @@
 extends Node2D
 
-var score = 0
-var combo = 0
-
-var max_combo = 0
-var great = 0
-var good = 0
-var okay = 0
-var missed = 0
 
 var bpm = 120
 
@@ -26,11 +18,18 @@ var rand = 0
 var note = load("res://Scenes/Note.tscn")
 var instance
 var anim = false
+var stage = false
 
 func _ready():
+	
 	randomize()
+	stage = Fade.scene
+	if !stage:
+		$Conductor.stream = load ("res://Assets/song/first.ogg")
+	if stage:
+		$Conductor.stream = load ("res://Assets/song/boss.ogg")
 	$Conductor.play_with_beat_offset(8)
-	#$Conductor.play_from_beat(100,8)
+	#$Conductor.play_from_beat(240,8)
 	$bg/Sprite2/AnimationPlayer.play("default")
 
 
@@ -68,12 +67,23 @@ func _on_Conductor_beat(position):
 		spawn_3_beat = 2
 		spawn_4_beat = 0
 	if song_position_in_beats > 152:
-		$girl.hide()
-		
+		if stage:
+			spawn_1_beat = 0
+			spawn_2_beat = 1
+			spawn_3_beat = 0
+			spawn_4_beat = 2
+		else:  
+			$Conductor.stop()
+			Fade.scene =true
 
-
-
-
+	if song_position_in_beats > 192:
+		spawn_1_beat = 2
+		spawn_2_beat = 0
+		spawn_3_beat = 1
+		spawn_4_beat = 0
+	if song_position_in_beats > 268:
+		#Fade.change_scene("res://Scenes/maingame.tscn")
+		$Conductor.stop()
 
 		if get_tree().change_scene("res://Scenes/End.tscn") != OK:
 			print ("Error changing scene to End")
@@ -142,3 +152,7 @@ func _on_Timer_timeout():
 func _on_KinematicBody2D_input_event(viewport, event, shape_idx):
 	$girl.play("miss")
 	anim = true
+
+
+func _on_Conductor_finished():
+	Fade.change_scene("res://Scenes/maingame.tscn")

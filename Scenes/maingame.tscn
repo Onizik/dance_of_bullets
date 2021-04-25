@@ -1,3 +1,70 @@
-[gd_scene format=2]
+[gd_scene load_steps=11 format=2]
 
-[node name="maingame" type="Node2D"]
+[ext_resource path="res://Scenes/girl.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Conductor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/ArrowButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Frames/arrow_up_frames.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://Scenes/Game.gd" type="Script" id=5]
+[ext_resource path="res://Frames/arrow_left_frames.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://Assets/song/track1-4_final.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Frames/arrow_right_frames.tres" type="SpriteFrames" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 13.1845, 24.3354 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35.8632, 34.4147 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="girl" parent="." instance=ExtResource( 1 )]
+position = Vector2( 960, 250 )
+frame = 10
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="girl"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="girl/KinematicBody2D"]
+position = Vector2( 5.03961, -85.6747 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="girl"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="girl/Area2D"]
+position = Vector2( 7.55951, -75.5952 )
+shape = SubResource( 2 )
+
+[node name="Conductor" parent="." instance=ExtResource( 2 )]
+stream = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArrowUp" parent="." instance=ExtResource( 3 )]
+position = Vector2( 966, 516 )
+frames = ExtResource( 4 )
+input = "up"
+
+[node name="ArrowLeft" parent="." instance=ExtResource( 3 )]
+position = Vector2( 720, 350 )
+frames = ExtResource( 6 )
+input = "left"
+
+[node name="ArrowRight" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1210, 350 )
+frames = ExtResource( 8 )
+input = "right"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="input_event" from="girl/KinematicBody2D" to="." method="_on_KinematicBody2D_input_event"]
+[connection signal="area_entered" from="girl/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
+[connection signal="measure" from="Conductor" to="." method="_on_Conductor_measure"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

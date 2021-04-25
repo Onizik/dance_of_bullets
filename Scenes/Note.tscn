@@ -4,10 +4,10 @@
 [ext_resource path="res://Note.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 48.7284, 77.6073 )
+extents = Vector2( 41.0387, 74.1035 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 22.9589, 33.2758 )
+extents = Vector2( 27.1459, 47.1486 )
 
 [node name="Note" type="Area2D" groups=[
 "note",

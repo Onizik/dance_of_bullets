@@ -53,25 +53,21 @@ func _on_Conductor_beat(position):
 	song_position_in_beats = position
 	if song_position_in_beats > 36:
 		spawn_1_beat = 1
-		spawn_2_beat = 1
-		spawn_3_beat = 0
-		spawn_4_beat = 1
-	if song_position_in_beats > 98:
+		spawn_2_beat = 0
+		spawn_3_beat = 1
+		spawn_4_beat = 0
+	if song_position_in_beats > 52:
 		spawn_1_beat = 2
 		spawn_2_beat = 0
 		spawn_3_beat = 1
 		spawn_4_beat = 0
-	if song_position_in_beats > 132:
+	if song_position_in_beats > 98:
 		spawn_1_beat = 1
-		spawn_2_beat = 2
-		spawn_3_beat = 0
-		spawn_4_beat = 2
-	if song_position_in_beats > 162:
-		spawn_1_beat = 2
-		spawn_2_beat = 2
-		spawn_3_beat = 1
-		spawn_4_beat = 1
-	if song_position_in_beats > 174:
+		spawn_2_beat = 0
+		spawn_3_beat = 2
+		spawn_4_beat = 0
+	if song_position_in_beats > 152:
+		$girl.hide()
 		
 
 
@@ -99,10 +95,18 @@ func _spawn_notes(to_spawn):
 		
 
 func _process(delta):
-	pass
-
-
-
+	if Input.is_action_pressed("left"):
+		$girl.play ("left")
+	if Input.is_action_pressed("right"):
+		$girl.play ("right")
+	if Input.is_action_pressed("up"):
+		$girl.play ("down")
+	if Input.is_action_pressed("left") and Input.is_action_pressed("right"):
+		$girl.play ("lr")
+	if Input.is_action_pressed("left") and Input.is_action_pressed("up"):
+		$girl.play ("ld")
+	if Input.is_action_pressed("up") and Input.is_action_pressed("right"):
+		$girl.play ("rd")
 
 # Declare member variables here. Examples:
 # var a = 2

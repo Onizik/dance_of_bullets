@@ -1,7 +1,7 @@
 extends Area2D
 
-const TARGET_Y_LEFT = 250
-const SPAWN_Y_LEFT = 250
+const TARGET_Y_LEFT = 400
+const SPAWN_Y_LEFT = 400
 
 const TARGET_X_LEFT = 710
 const SPAWN_X_LEFT = -150
@@ -14,8 +14,8 @@ const TARGET_X_DOWN = 966
 const SPAWN_X_DOWN = 966
 
 
-const TARGET_Y_RIGHT = 250
-const SPAWN_Y_RIGHT = 250
+const TARGET_Y_RIGHT = 400
+const SPAWN_Y_RIGHT = 400
 
 const TARGET_X_RIGHT = 1210
 const SPAWN_X_RIGHT = 2070
@@ -39,7 +39,7 @@ var hit = false
 var left = false
 var down = false
 var right = false
-
+var time = 2.2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,17 +49,17 @@ func initialize(lane):
 	if lane == 0:
 		$AnimatedSprite.play("1")
 		position = LEFT_LANE_SPAWN
-		speed = DIST_TO_TARGET_LEFT / 2.0
+		speed = DIST_TO_TARGET_LEFT / time
 		left = true
 	elif lane == 1:
 		$AnimatedSprite.play("3")
 		position = CENTRE_LANE_SPAWN
-		speed = DIST_TO_TARGET_DOWN / 2.0
+		speed = DIST_TO_TARGET_DOWN / time
 		down = true
 	elif lane == 2:
 		$AnimatedSprite.play("4")
 		position = RIGHT_LANE_SPAWN
-		speed = DIST_TO_TARGET_RIGHT / 2.0
+		speed = DIST_TO_TARGET_RIGHT / time
 		right = true
 	else:
 		printerr("Invalid lane set for note: " + str(lane))

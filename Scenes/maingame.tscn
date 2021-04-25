@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/girl.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Conductor.tscn" type="PackedScene" id=2]
@@ -8,7 +8,26 @@
 [ext_resource path="res://Frames/arrow_left_frames.tres" type="SpriteFrames" id=6]
 [ext_resource path="res://Assets/song/track1-4_final.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Frames/arrow_right_frames.tres" type="SpriteFrames" id=8]
-[ext_resource path="res://Assets/background/fon1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/background/ae/bridge.png" type="Texture" id=9]
+[ext_resource path="res://Assets/background/ae/fog.png" type="Texture" id=10]
+[ext_resource path="res://Assets/background/ae/back.png" type="Texture" id=11]
+
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 10, 20 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 506.956, 99.7955 ), Vector2( -487.92, 123.768 ), Vector2( 506.956, 99.7955 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.8434, 56.3712 )
@@ -19,14 +38,51 @@ extents = Vector2( 35.8632, 53.3746 )
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="bg" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
+texture = ExtResource( 11 )
+
+[node name="bridge" type="Sprite" parent="bg"]
+position = Vector2( -285.732, 279.383 )
 texture = ExtResource( 9 )
+
+[node name="Sprite2" type="Sprite" parent="bg"]
+modulate = Color( 1, 0.996078, 0.996078, 1 )
+position = Vector2( 506.956, 99.7955 )
+scale = Vector2( 1.59192, 1.59192 )
+texture = ExtResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bg/Sprite2"]
+anims/default = SubResource( 3 )
+
+[node name="Conductor" parent="." instance=ExtResource( 2 )]
+stream = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArrowUp" parent="." instance=ExtResource( 3 )]
+position = Vector2( 936.225, 495.133 )
+frames = ExtResource( 4 )
+input = "up"
+
+[node name="ArrowLeft" parent="." instance=ExtResource( 3 )]
+position = Vector2( 751.68, 416 )
+frames = ExtResource( 6 )
+input = "left"
+
+[node name="ArrowRight" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1116.05, 416.378 )
+frames = ExtResource( 8 )
+input = "right"
 
 [node name="girl" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 250 )
-animation = "idle"
-frame = 5
+frame = 4
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="girl"]
 
@@ -40,37 +96,12 @@ shape = SubResource( 1 )
 position = Vector2( 0, 40 )
 shape = SubResource( 2 )
 
-[node name="Conductor" parent="." instance=ExtResource( 2 )]
-stream = ExtResource( 7 )
-
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ArrowUp" parent="." instance=ExtResource( 3 )]
-position = Vector2( 960, 470 )
-frames = ExtResource( 4 )
-input = "up"
-
-[node name="ArrowLeft" parent="." instance=ExtResource( 3 )]
-position = Vector2( 850, 470 )
-frames = ExtResource( 6 )
-input = "left"
-
-[node name="ArrowRight" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1070, 470 )
-frames = ExtResource( 8 )
-input = "right"
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
-[connection signal="input_event" from="girl/KinematicBody2D" to="." method="_on_KinematicBody2D_input_event"]
-[connection signal="area_entered" from="girl/Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_Conductor_measure"]
+[connection signal="input_event" from="girl/KinematicBody2D" to="." method="_on_KinematicBody2D_input_event"]
+[connection signal="area_entered" from="girl/Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

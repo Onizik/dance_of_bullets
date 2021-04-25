@@ -25,12 +25,13 @@ var lane = 0
 var rand = 0
 var note = load("res://Scenes/Note.tscn")
 var instance
-
+var anim = false
 
 func _ready():
 	randomize()
 	$Conductor.play_with_beat_offset(8)
 	#$Conductor.play_from_beat(100,8)
+	$bg/Sprite2/AnimationPlayer.play("default")
 
 
 func _input(event):
@@ -97,16 +98,22 @@ func _spawn_notes(to_spawn):
 func _process(delta):
 	if Input.is_action_pressed("left"):
 		$girl.play ("left")
+		anim = true
 	if Input.is_action_pressed("right"):
 		$girl.play ("right")
+		anim = true
 	if Input.is_action_pressed("up"):
 		$girl.play ("down")
+		anim = true
 	if Input.is_action_pressed("left") and Input.is_action_pressed("right"):
 		$girl.play ("lr")
+		anim = true
 	if Input.is_action_pressed("left") and Input.is_action_pressed("up"):
 		$girl.play ("ld")
+		anim = true
 	if Input.is_action_pressed("up") and Input.is_action_pressed("right"):
 		$girl.play ("rd")
+		anim = true
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -123,11 +130,15 @@ func _process(delta):
 func _on_Area2D_area_entered(area):
 	
 	$girl.play("miss")
+	anim = true
 
 
 func _on_Timer_timeout():
-	$girl.play("idle")
+
+		$girl.play("idle")
+
 
 
 func _on_KinematicBody2D_input_event(viewport, event, shape_idx):
 	$girl.play("miss")
+	anim = true

@@ -1,7 +1,7 @@
 extends Area2D
 
-const TARGET_Y_LEFT = 400
-const SPAWN_Y_LEFT = 400
+const TARGET_Y_LEFT = 300
+const SPAWN_Y_LEFT = 300
 
 const TARGET_X_LEFT = 710
 const SPAWN_X_LEFT = -150
@@ -14,8 +14,8 @@ const TARGET_X_DOWN = 966
 const SPAWN_X_DOWN = 966
 
 
-const TARGET_Y_RIGHT = 400
-const SPAWN_Y_RIGHT = 400
+const TARGET_Y_RIGHT = 300
+const SPAWN_Y_RIGHT = 300
 
 const TARGET_X_RIGHT = 1210
 const SPAWN_X_RIGHT = 2070
@@ -23,7 +23,7 @@ const SPAWN_X_RIGHT = 2070
 
 
 
-
+export var input = ""
 
 
 const DIST_TO_TARGET_LEFT = TARGET_X_LEFT - SPAWN_X_LEFT
@@ -40,7 +40,7 @@ var left = false
 var down = false
 var right = false
 var time = 2.2
-
+var lame = "3"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -87,14 +87,22 @@ func _physics_process(delta):
 		
 
 
-func destroy():
-	$AnimatedSprite.visible = false
+func destroy(lane):
+	lame = lane
+	if lane =="left":
+		$AnimatedSprite.play("1d")
+	if lane =="up":
+		$AnimatedSprite.play("3d")
+	if lane =="right":
+		$AnimatedSprite.play("4d")
 	hit = true
 	$Timer.start()
 
 func _on_Timer_timeout():
+	
+	$AnimatedSprite.visible = false
 	queue_free()
 
 
 func _on_Note_body_entered(body):
-	destroy()
+	destroy(lame)

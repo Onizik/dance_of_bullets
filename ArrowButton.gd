@@ -10,7 +10,7 @@ func _unhandled_input(event):
 		if event.is_action_pressed(input, false):
 			if current_note != null:
 				if hit ==2:
-					current_note.destroy()
+					current_note.destroy(input)
 				_reset()
 
 

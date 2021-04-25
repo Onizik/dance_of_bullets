@@ -62,5 +62,5 @@ animations = [ {
 [node name="girl" type="AnimatedSprite"]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 7
+frame = 6
 playing = true

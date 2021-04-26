@@ -1,9 +1,16 @@
 extends CanvasLayer
 
 signal scene_changed()
-var about = false
+
 onready var animation_player = $AnimationPlayer
 onready var black = $Control/ColorRect
+
+var stop = true
+var ae = 0
+
+var about = false
+var scene = false
+var bom = false
 
 func change_scene(path, delay = 0.5):
 	yield(get_tree().create_timer(delay), "timeout")
@@ -13,13 +20,18 @@ func change_scene(path, delay = 0.5):
 	animation_player.play_backwards("New Anim")
 	emit_signal("scene_changed")
 
+func _ready():
+	$AudioStreamPlayer2D.play()
+func _physics_process(delta):
+	if !stop:
+		$AudioStreamPlayer2D.stream_paused = false
+	else: $AudioStreamPlayer2D.stream_paused = true
+	
 
-var scene = true
-var bom = false
 
 func volume (value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),
 	linear2db(value))
 	ae = value
 
-var ae = 0
+

@@ -6,7 +6,7 @@
 [ext_resource path="res://Frames/arrow_up_frames.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=5]
 [ext_resource path="res://Frames/arrow_left_frames.tres" type="SpriteFrames" id=6]
-[ext_resource path="res://Assets/song/track1-4_final.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Assets/song/first.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Frames/arrow_right_frames.tres" type="SpriteFrames" id=8]
 [ext_resource path="res://Assets/background/ae/bridge.png" type="Texture" id=9]
 [ext_resource path="res://Assets/background/ae/fog.png" type="Texture" id=10]
@@ -156,7 +156,6 @@ playing = true
 
 [node name="Conductor" parent="." instance=ExtResource( 2 )]
 stream = ExtResource( 7 )
-volume_db = -10.097
 
 [node name="Label" type="Label" parent="."]
 margin_right = 40.0
@@ -182,7 +181,6 @@ input = "right"
 
 [node name="girl" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 300 )
-frame = 3
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="girl"]
 
@@ -201,13 +199,11 @@ wait_time = 0.5
 autostart = true
 
 [node name="hand" type="Sprite" parent="."]
-visible = false
 position = Vector2( 961.782, 306.258 )
 z_index = 1
 texture = ExtResource( 12 )
 
 [node name="booby" type="Sprite" parent="."]
-visible = false
 position = Vector2( 996.472, 1136.66 )
 z_index = 1
 texture = ExtResource( 13 )

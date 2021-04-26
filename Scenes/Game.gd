@@ -22,11 +22,14 @@ var stage = false
 var hp = 5
 
 func _ready():
+	Fade.stop = true
 	randomize()
 	stage = Fade.scene
 	if Fade.about:
 		$Conductor.stream = load ("res://Assets/song/credits.ogg")
-		bpm = 110
+		bpm = 100
+		sec_per_beat = 100.0 / bpm
+		
 		$logo.visible = true
 		$dan.visible = true
 		$evg.visible = true
@@ -45,6 +48,9 @@ func _ready():
 
 func _input(event):
 	if event.is_action("escape"):
+		Fade.about = false
+		Fade.scene = false
+		Fade.bom = false
 		if get_tree().change_scene("res://Scenes/Menu.tscn") != OK:
 			print ("Error changing scene to Menu")
 
@@ -103,15 +109,16 @@ func _on_Conductor_beat(position):
 		spawn_2_beat = 0
 		spawn_3_beat = 2
 		spawn_4_beat = 0
+	if song_position_in_beats == 152 and !Fade.scene:
+		Fade.change_scene("res://Scenes/maingame.tscn")
+		Fade.scene =true
+
 	if song_position_in_beats > 152:
-		if stage:
-			spawn_1_beat = 0
-			spawn_2_beat = 1
-			spawn_3_beat = 0
-			spawn_4_beat = 2
-		else:  
-			Fade.change_scene("res://Scenes/maingame.tscn")
-			Fade.scene =true
+		spawn_1_beat = 0
+		spawn_2_beat = 1
+		spawn_3_beat = 0
+		spawn_4_beat = 2
+
 	if song_position_in_beats == 168:
 		storm()
 		$hand.visible = true
@@ -122,9 +129,8 @@ func _on_Conductor_beat(position):
 		spawn_2_beat = 0
 		spawn_3_beat = 1
 		spawn_4_beat = 0
-	if song_position_in_beats > 268:
-		$Conductor.stop()
-		Fade.change_scene("res://Scenes/menu.tscn")
+	if song_position_in_beats == 268:
+		Fade.change_scene("res://Scenes/win.tscn")
 
 		if get_tree().change_scene("res://Scenes/End.tscn") != OK:
 			print ("Error changing scene to End")

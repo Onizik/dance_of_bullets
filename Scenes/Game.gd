@@ -28,6 +28,9 @@ func _ready():
 		$Conductor.stream = load ("res://Assets/song/credits.ogg")
 		bpm = 110
 		$logo.visible = true
+		$dan.visible = true
+		$evg.visible = true
+		$dasha.visible = true
 	else:
 		if !stage:
 			$Conductor.stream = load ("res://Assets/song/first.ogg")

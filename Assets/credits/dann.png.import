@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/evg1.png-0869328f233641f91c8465d6d0650c9b.stex"
+path="res://.import/dann.png-8a97c6769d3be737ad70ea60f51522d5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/credits/evg1.png"
-dest_files=[ "res://.import/evg1.png-0869328f233641f91c8465d6d0650c9b.stex" ]
+source_file="res://Assets/credits/dann.png"
+dest_files=[ "res://.import/dann.png-8a97c6769d3be737ad70ea60f51522d5.stex" ]
 
 [params]
 

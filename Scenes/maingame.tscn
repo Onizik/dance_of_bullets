@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scenes/girl.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Conductor.tscn" type="PackedScene" id=2]
@@ -28,6 +28,9 @@
 [ext_resource path="res://Assets/menu/logo.PNG" type="Texture" id=26]
 [ext_resource path="res://Assets/background/ae/mainback.png" type="Texture" id=27]
 [ext_resource path="res://Assets/background/ae/foodback.png" type="Texture" id=28]
+[ext_resource path="res://Assets/credits/evgn.png" type="Texture" id=29]
+[ext_resource path="res://Assets/credits/dann.png" type="Texture" id=30]
+[ext_resource path="res://Assets/credits/dashan.png" type="Texture" id=31]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -148,6 +151,7 @@ anims/default = SubResource( 3 )
 position = Vector2( 372.931, 112.303 )
 frames = SubResource( 5 )
 animation = "5"
+frame = 1
 playing = true
 
 [node name="Conductor" parent="." instance=ExtResource( 2 )]
@@ -178,7 +182,7 @@ input = "right"
 
 [node name="girl" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 300 )
-frame = 9
+frame = 3
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="girl"]
 
@@ -240,6 +244,24 @@ visible = false
 position = Vector2( 1818.02, 958.446 )
 scale = Vector2( 0.447769, 0.447769 )
 texture = ExtResource( 26 )
+
+[node name="evg" type="Sprite" parent="."]
+visible = false
+position = Vector2( 979.196, 1037.79 )
+scale = Vector2( 0.476557, 0.476557 )
+texture = ExtResource( 29 )
+
+[node name="dasha" type="Sprite" parent="."]
+visible = false
+position = Vector2( 393.099, 650.69 )
+scale = Vector2( 0.494427, 0.494427 )
+texture = ExtResource( 31 )
+
+[node name="dan" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1489.55, 674.042 )
+scale = Vector2( 0.448103, 0.448103 )
+texture = ExtResource( 30 )
 
 [connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
 [connection signal="finished" from="Conductor" to="." method="_on_Conductor_finished"]

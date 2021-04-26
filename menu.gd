@@ -20,7 +20,7 @@ func _on_settings_pressed():
 func _on_play_pressed():
 	
 
-	Fade.change_scene("res://Scenes/maingame.tscn")
+	Fade.change_scene("res://Scenes/story.tscn")
 
 
 

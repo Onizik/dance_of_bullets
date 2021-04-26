@@ -151,7 +151,6 @@ anims/default = SubResource( 3 )
 position = Vector2( 372.931, 112.303 )
 frames = SubResource( 5 )
 animation = "5"
-frame = 1
 playing = true
 
 [node name="Conductor" parent="." instance=ExtResource( 2 )]
@@ -181,6 +180,7 @@ input = "right"
 
 [node name="girl" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 300 )
+frame = 3
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="girl"]
 
@@ -199,11 +199,13 @@ wait_time = 0.5
 autostart = true
 
 [node name="hand" type="Sprite" parent="."]
+visible = false
 position = Vector2( 961.782, 306.258 )
 z_index = 1
 texture = ExtResource( 12 )
 
 [node name="booby" type="Sprite" parent="."]
+visible = false
 position = Vector2( 996.472, 1136.66 )
 z_index = 1
 texture = ExtResource( 13 )

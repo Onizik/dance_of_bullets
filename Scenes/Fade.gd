@@ -21,11 +21,11 @@ func change_scene(path, delay = 0.5):
 	emit_signal("scene_changed")
 
 func _ready():
-	$AudioStreamPlayer2D.play()
+	$AudioStreamPlayer.play()
 func _physics_process(delta):
 	if !stop:
-		$AudioStreamPlayer2D.stream_paused = false
-	else: $AudioStreamPlayer2D.stream_paused = true
+		$AudioStreamPlayer.stream_paused = false
+	else: $AudioStreamPlayer.stream_paused = true
 	
 
 

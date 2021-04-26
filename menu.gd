@@ -16,14 +16,20 @@ func _ready():
 #	pass
 
 
-func _on_start_pressed():
-	get_tree().change_scene("res://Scenes/maingame.tscn")
-
-
-func _on_start_button_up():
-	pass
-
-
 func _on_TextureButton_pressed():
 	$settings.hide()
 	get_tree().change_scene("res://Scenes/girl.tscn")
+
+
+func _on_settings_pressed():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 
+								linear2db(Fade.ae))
+	get_tree().change_scene("res://Scenes/settings.tscn")
+
+
+func _on_play_pressed():
+	Fade.change_scene("res://Scenes/maingame.tscn")
+
+
+func _on_exit_pressed():
+	get_tree().quit()

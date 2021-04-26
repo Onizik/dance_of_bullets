@@ -16,3 +16,10 @@ func change_scene(path, delay = 0.5):
 
 var scene = true
 var bom = false
+
+func volume (value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),
+	linear2db(value))
+	ae = value
+
+var ae = 0

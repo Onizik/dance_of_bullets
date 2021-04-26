@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=29 format=2]
+[gd_resource type="SpriteFrames" load_steps=31 format=2]
 
 [ext_resource path="res://Assets/enemy/first/1.png" type="Texture" id=1]
 [ext_resource path="res://Assets/enemy/first/2.png" type="Texture" id=2]
@@ -27,11 +27,13 @@
 [ext_resource path="res://Assets/enemy/boss/heart/hr1.png" type="Texture" id=25]
 [ext_resource path="res://Assets/enemy/boss/heart/hr.png" type="Texture" id=26]
 [ext_resource path="res://Assets/enemy/boss/heart/hl.png" type="Texture" id=27]
+[ext_resource path="res://Assets/enemy/boss/heart/hrd.png" type="Texture" id=28]
+[ext_resource path="res://Assets/enemy/boss/heart/hld.png" type="Texture" id=29]
 [ext_resource path="res://Assets/enemy/boss/heart/hl1.png" type="Texture" id=30]
 
 [resource]
 animations = [ {
-"frames": [ ExtResource( 30 ) ],
+"frames": [ ExtResource( 29 ) ],
 "loop": true,
 "name": "hld",
 "speed": 5.0
@@ -106,7 +108,7 @@ animations = [ {
 "name": "hl",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 25 ) ],
+"frames": [ ExtResource( 28 ) ],
 "loop": true,
 "name": "hrd",
 "speed": 5.0

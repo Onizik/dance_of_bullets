@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/girl.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Conductor.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/background/ae/fog.png" type="Texture" id=10]
 [ext_resource path="res://Assets/background/ae/back.png" type="Texture" id=11]
 [ext_resource path="res://Assets/background/boss/hands.png" type="Texture" id=12]
+[ext_resource path="res://Assets/enemy/bossssss.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=3]
 resource_name = "default"
@@ -74,6 +75,7 @@ anims/default = SubResource( 3 )
 
 [node name="Conductor" parent="." instance=ExtResource( 2 )]
 stream = ExtResource( 7 )
+volume_db = -10.097
 
 [node name="Label" type="Label" parent="."]
 margin_right = 40.0
@@ -99,7 +101,7 @@ input = "right"
 
 [node name="girl" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 300 )
-frame = 3
+frame = 4
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="girl"]
 
@@ -122,6 +124,12 @@ visible = false
 position = Vector2( 961.782, 306.258 )
 z_index = 1
 texture = ExtResource( 12 )
+
+[node name="booby" type="Sprite" parent="."]
+visible = false
+position = Vector2( 996.472, 1136.66 )
+z_index = 1
+texture = ExtResource( 13 )
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0

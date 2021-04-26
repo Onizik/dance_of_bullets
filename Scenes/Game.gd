@@ -78,6 +78,7 @@ func _on_Conductor_beat(position):
 	if song_position_in_beats == 168:
 		storm()
 		$hand.visible = true
+		$booby.visible = true
 
 	if song_position_in_beats > 192:
 		spawn_1_beat = 2
@@ -157,7 +158,9 @@ func _on_KinematicBody2D_input_event(viewport, event, shape_idx):
 
 
 func _on_Conductor_finished():
-	Fade.change_scene("res://Scenes/maingame.tscn")
+	if !Fade.scene:
+		Fade.change_scene("res://Scenes/maingame.tscn")
+	else: Fade.change_scene("res://Scenes/menu.tscn")
 
 onready var animation_player = $AnimationPlayer
 onready var black = $Control/ColorRect

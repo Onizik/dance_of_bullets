@@ -93,13 +93,13 @@ frames = ExtResource( 6 )
 input = "left"
 
 [node name="ArrowRight" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1260.86, 417.567 )
+position = Vector2( 1240.86, 417.567 )
 frames = ExtResource( 8 )
 input = "right"
 
 [node name="girl" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 300 )
-frame = 9
+frame = 3
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="girl"]
 
@@ -124,7 +124,6 @@ z_index = 1
 texture = ExtResource( 12 )
 
 [node name="Control" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {

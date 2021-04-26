@@ -60,7 +60,7 @@ func initialize(lane):
 		if !Fade.scene:
 			$AnimatedSprite.play("3")
 		elif Fade.bom:
-			$AnimatedSprite.play("bd")
+			$AnimatedSprite.play("hl")
 		else: $AnimatedSprite.play("2")
 		position = CENTRE_LANE_SPAWN
 		speed = DIST_TO_TARGET_DOWN / time
@@ -113,7 +113,7 @@ func destroy(lane):
 		if !Fade.scene:
 			$AnimatedSprite.play("3d")
 		elif Fade.bom:
-			$AnimatedSprite.play("bdd")
+			$AnimatedSprite.play("hld")
 		else: $AnimatedSprite.play("2d")
 	if lane =="right":
 		if !Fade.scene:

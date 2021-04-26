@@ -28,8 +28,8 @@ func _ready():
 		$Conductor.stream = load ("res://Assets/song/first.ogg")
 	if stage:
 		$Conductor.stream = load ("res://Assets/song/boss.ogg")
-	$Conductor.play_with_beat_offset(8)
-	#$Conductor.play_from_beat(152,8)
+	#$Conductor.play_with_beat_offset(8)
+	$Conductor.play_from_beat(152,8)
 	$bg/Sprite2/AnimationPlayer.play("default")
 
 
@@ -85,7 +85,6 @@ func _on_Conductor_beat(position):
 		spawn_3_beat = 1
 		spawn_4_beat = 0
 	if song_position_in_beats > 268:
-		#Fade.change_scene("res://Scenes/maingame.tscn")
 		$Conductor.stop()
 
 		if get_tree().change_scene("res://Scenes/End.tscn") != OK:
@@ -162,8 +161,15 @@ func _on_Conductor_finished():
 
 onready var animation_player = $AnimationPlayer
 onready var black = $Control/ColorRect
+
+
 func storm():
 	#yield(get_tree().create_timer(0.3), "timeout")
 	animation_player.play("storm")
 	yield(animation_player, "animation_finished")
 	animation_player.play_backwards("storm")
+	Fade.bom = true
+
+
+func _on_Button_pressed():
+	pass

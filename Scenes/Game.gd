@@ -29,7 +29,7 @@ func _ready():
 	if stage:
 		$Conductor.stream = load ("res://Assets/song/boss.ogg")
 	$Conductor.play_with_beat_offset(8)
-	#$Conductor.play_from_beat(240,8)
+	#$Conductor.play_from_beat(152,8)
 	$bg/Sprite2/AnimationPlayer.play("default")
 
 
@@ -75,6 +75,9 @@ func _on_Conductor_beat(position):
 		else:  
 			$Conductor.stop()
 			Fade.scene =true
+	if song_position_in_beats == 168:
+		storm()
+		$hand.visible = true
 
 	if song_position_in_beats > 192:
 		spawn_1_beat = 2
@@ -156,3 +159,11 @@ func _on_KinematicBody2D_input_event(viewport, event, shape_idx):
 
 func _on_Conductor_finished():
 	Fade.change_scene("res://Scenes/maingame.tscn")
+
+onready var animation_player = $AnimationPlayer
+onready var black = $Control/ColorRect
+func storm():
+	#yield(get_tree().create_timer(0.3), "timeout")
+	animation_player.play("storm")
+	yield(animation_player, "animation_finished")
+	animation_player.play_backwards("storm")

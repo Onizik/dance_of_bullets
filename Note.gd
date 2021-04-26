@@ -3,11 +3,11 @@ extends Area2D
 const TARGET_Y_LEFT = 300
 const SPAWN_Y_LEFT = 300
 
-const TARGET_X_LEFT = 710
+const TARGET_X_LEFT = 650
 const SPAWN_X_LEFT = -150
 
 
-const TARGET_Y_DOWN = 516
+const TARGET_Y_DOWN = 526
 const SPAWN_Y_DOWN = 1230
 
 const TARGET_X_DOWN = 966
@@ -17,7 +17,7 @@ const SPAWN_X_DOWN = 966
 const TARGET_Y_RIGHT = 300
 const SPAWN_Y_RIGHT = 300
 
-const TARGET_X_RIGHT = 1210
+const TARGET_X_RIGHT = 1270
 const SPAWN_X_RIGHT = 2070
 
 
@@ -49,13 +49,18 @@ func initialize(lane):
 	if lane == 0:
 		if !Fade.scene:
 			$AnimatedSprite.play("1")
+		elif Fade.bom:
+			$AnimatedSprite.play("hl")
 		else: $AnimatedSprite.play("bl")
+			
 		position = LEFT_LANE_SPAWN
 		speed = DIST_TO_TARGET_LEFT / time
 		left = true
 	elif lane == 1:
 		if !Fade.scene:
 			$AnimatedSprite.play("3")
+		elif Fade.bom:
+			$AnimatedSprite.play("bd")
 		else: $AnimatedSprite.play("2")
 		position = CENTRE_LANE_SPAWN
 		speed = DIST_TO_TARGET_DOWN / time
@@ -63,6 +68,8 @@ func initialize(lane):
 	elif lane == 2:
 		if !Fade.scene:
 			$AnimatedSprite.play("4")
+		elif Fade.bom:
+			$AnimatedSprite.play("hr")
 		else: $AnimatedSprite.play("br")
 		position = RIGHT_LANE_SPAWN
 		speed = DIST_TO_TARGET_RIGHT / time
@@ -98,15 +105,21 @@ func destroy(lane):
 	if lane =="left":
 		if !Fade.scene:
 			$AnimatedSprite.play("1d")
+		elif Fade.bom:
+			$AnimatedSprite.play("hld")
 		else: 
 			$AnimatedSprite.play("bld")
 	if lane =="up":
 		if !Fade.scene:
 			$AnimatedSprite.play("3d")
+		elif Fade.bom:
+			$AnimatedSprite.play("bdd")
 		else: $AnimatedSprite.play("2d")
 	if lane =="right":
 		if !Fade.scene:
 			$AnimatedSprite.play("4d")
+		elif Fade.bom:
+			$AnimatedSprite.play("hrd")
 		else: $AnimatedSprite.play("brd")
 	hit = true
 	$Timer.start()

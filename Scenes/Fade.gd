@@ -13,4 +13,6 @@ func change_scene(path, delay = 0.5):
 	animation_player.play_backwards("New Anim")
 	emit_signal("scene_changed")
 
+
 var scene = true
+var bom = false

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=31 format=2]
+[gd_resource type="SpriteFrames" load_steps=37 format=2]
 
 [ext_resource path="res://Assets/enemy/first/1.png" type="Texture" id=1]
 [ext_resource path="res://Assets/enemy/first/2.png" type="Texture" id=2]
@@ -30,6 +30,12 @@
 [ext_resource path="res://Assets/enemy/boss/heart/hrd.png" type="Texture" id=28]
 [ext_resource path="res://Assets/enemy/boss/heart/hld.png" type="Texture" id=29]
 [ext_resource path="res://Assets/enemy/boss/heart/hl1.png" type="Texture" id=30]
+[ext_resource path="res://Assets/credits/dan2.png" type="Texture" id=31]
+[ext_resource path="res://Assets/credits/dan1.png" type="Texture" id=32]
+[ext_resource path="res://Assets/credits/dasha1.png" type="Texture" id=33]
+[ext_resource path="res://Assets/credits/dasha2.png" type="Texture" id=34]
+[ext_resource path="res://Assets/credits/evg1.png" type="Texture" id=35]
+[ext_resource path="res://Assets/credits/evg2.png" type="Texture" id=36]
 
 [resource]
 animations = [ {
@@ -107,6 +113,21 @@ animations = [ {
 "loop": true,
 "name": "hl",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 35 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "evg",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "dasha",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "dan",
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 28 ) ],
 "loop": true,

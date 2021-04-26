@@ -66,4 +66,5 @@ texture = ExtResource( 6 )
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="about" to="." method="_on_about_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

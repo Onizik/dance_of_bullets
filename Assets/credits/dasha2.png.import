@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/f2.png-bb686c1df3a42d0ddbbfaab30a96f599.stex"
+path="res://.import/dasha2.png-2685b830b5197964dce03a320642038d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/menu/torch/f2.png"
-dest_files=[ "res://.import/f2.png-bb686c1df3a42d0ddbbfaab30a96f599.stex" ]
+source_file="res://Assets/credits/dasha2.png"
+dest_files=[ "res://.import/dasha2.png-2685b830b5197964dce03a320642038d.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

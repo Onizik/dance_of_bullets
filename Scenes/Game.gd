@@ -19,17 +19,24 @@ var note = load("res://Scenes/Note.tscn")
 var instance
 var anim = false
 var stage = false
+var hp = 5
 
 func _ready():
-	
 	randomize()
 	stage = Fade.scene
-	if !stage:
-		$Conductor.stream = load ("res://Assets/song/first.ogg")
-	if stage:
-		$Conductor.stream = load ("res://Assets/song/boss.ogg")
-	#$Conductor.play_with_beat_offset(8)
-	$Conductor.play_from_beat(152,8)
+	if Fade.about:
+		$Conductor.stream = load ("res://Assets/song/credits.ogg")
+		bpm = 110
+		$logo.visible = true
+	else:
+		if !stage:
+			$Conductor.stream = load ("res://Assets/song/first.ogg")
+			$bg.frame = 0
+		if stage:
+			$Conductor.stream = load ("res://Assets/song/boss.ogg")
+			$bg.frame = 1
+	$Conductor.play_with_beat_offset(8)
+	#$Conductor.play_from_beat(152,8)
 	$bg/Sprite2/AnimationPlayer.play("default")
 
 
@@ -50,17 +57,44 @@ func _on_Conductor_measure(position):
 		_spawn_notes(spawn_4_beat)
 
 func _on_Conductor_beat(position):
+	if hp<0:
+		Fade.change_scene("res://Scenes/Death.tscn")
+		Fade.scene = false
+		Fade.about = false
+		Fade.bom = false
+	elif hp==4:
+		$torch.play("4")
+	elif hp==3:
+		$torch.play("3")
+	elif hp==2:
+		$torch.play("2")
+	elif hp==1:
+		$torch.play("1")
+	elif hp==0:
+		$torch.play("0")
+
 	song_position_in_beats = position
 	if song_position_in_beats > 36:
 		spawn_1_beat = 1
 		spawn_2_beat = 0
 		spawn_3_beat = 1
 		spawn_4_beat = 0
+	if song_position_in_beats == 40 and Fade.about:
+		$thank/AnimationPlayer.play("New Anim")
+	if song_position_in_beats > 40:
+		spawn_1_beat = 1
+		spawn_2_beat = 0
+		spawn_3_beat = 1
+		spawn_4_beat = 0
+	if song_position_in_beats == 44 and Fade.about:
+		Fade.about = false
+		Fade.change_scene("res://Scenes/menu.tscn")
 	if song_position_in_beats > 52:
 		spawn_1_beat = 2
 		spawn_2_beat = 0
 		spawn_3_beat = 1
 		spawn_4_beat = 0
+
 	if song_position_in_beats > 98:
 		spawn_1_beat = 1
 		spawn_2_beat = 0
@@ -73,7 +107,7 @@ func _on_Conductor_beat(position):
 			spawn_3_beat = 0
 			spawn_4_beat = 2
 		else:  
-			$Conductor.stop()
+			Fade.change_scene("res://Scenes/maingame.tscn")
 			Fade.scene =true
 	if song_position_in_beats == 168:
 		storm()
@@ -87,6 +121,7 @@ func _on_Conductor_beat(position):
 		spawn_4_beat = 0
 	if song_position_in_beats > 268:
 		$Conductor.stop()
+		Fade.change_scene("res://Scenes/menu.tscn")
 
 		if get_tree().change_scene("res://Scenes/End.tscn") != OK:
 			print ("Error changing scene to End")
@@ -143,6 +178,7 @@ func _process(delta):
 func _on_Area2D_area_entered(area):
 	
 	$girl.play("miss")
+	hp-=1
 	anim = true
 
 
@@ -154,13 +190,12 @@ func _on_Timer_timeout():
 
 func _on_KinematicBody2D_input_event(viewport, event, shape_idx):
 	$girl.play("miss")
+	
 	anim = true
 
 
 func _on_Conductor_finished():
-	if !Fade.scene:
-		Fade.change_scene("res://Scenes/maingame.tscn")
-	else: Fade.change_scene("res://Scenes/menu.tscn")
+	pass
 
 onready var animation_player = $AnimationPlayer
 onready var black = $Control/ColorRect
@@ -170,6 +205,7 @@ func storm():
 	#yield(get_tree().create_timer(0.3), "timeout")
 	animation_player.play("storm")
 	yield(animation_player, "animation_finished")
+	$bg.frame = 2
 	animation_player.play_backwards("storm")
 	Fade.bom = true
 

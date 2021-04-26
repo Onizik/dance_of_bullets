@@ -33,3 +33,8 @@ func _on_play_pressed():
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+
+func _on_about_pressed():
+	Fade.about = true
+	Fade.change_scene("res://Scenes/maingame.tscn")

@@ -49,6 +49,8 @@ func initialize(lane):
 	if lane == 0:
 		if !Fade.scene:
 			$AnimatedSprite.play("1")
+		elif Fade.about:
+			$AnimatedSprite.play("dasha")
 		elif Fade.bom:
 			$AnimatedSprite.play("hl")
 		else: $AnimatedSprite.play("bl")
@@ -59,6 +61,8 @@ func initialize(lane):
 	elif lane == 1:
 		if !Fade.scene:
 			$AnimatedSprite.play("3")
+		elif Fade.about:
+			$AnimatedSprite.play("evg")
 		elif Fade.bom:
 			$AnimatedSprite.play("hl")
 		else: $AnimatedSprite.play("2")
@@ -68,6 +72,8 @@ func initialize(lane):
 	elif lane == 2:
 		if !Fade.scene:
 			$AnimatedSprite.play("4")
+		elif Fade.about:
+			$AnimatedSprite.play("dan")
 		elif Fade.bom:
 			$AnimatedSprite.play("hr")
 		else: $AnimatedSprite.play("br")
@@ -105,6 +111,8 @@ func destroy(lane):
 	if lane =="left":
 		if !Fade.scene:
 			$AnimatedSprite.play("1d")
+		elif Fade.about:
+			$AnimatedSprite.play("dasha")
 		elif Fade.bom:
 			$AnimatedSprite.play("hld")
 		else: 
@@ -112,12 +120,16 @@ func destroy(lane):
 	if lane =="up":
 		if !Fade.scene:
 			$AnimatedSprite.play("3d")
+		elif Fade.about:
+			$AnimatedSprite.play("evg")
 		elif Fade.bom:
 			$AnimatedSprite.play("hld")
 		else: $AnimatedSprite.play("2d")
 	if lane =="right":
 		if !Fade.scene:
 			$AnimatedSprite.play("4d")
+		elif Fade.about:
+			$AnimatedSprite.play("dan")
 		elif Fade.bom:
 			$AnimatedSprite.play("hrd")
 		else: $AnimatedSprite.play("brd")

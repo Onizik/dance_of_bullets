@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scenes/girl.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Conductor.tscn" type="PackedScene" id=2]
@@ -10,9 +10,32 @@
 [ext_resource path="res://Frames/arrow_right_frames.tres" type="SpriteFrames" id=8]
 [ext_resource path="res://Assets/background/ae/bridge.png" type="Texture" id=9]
 [ext_resource path="res://Assets/background/ae/fog.png" type="Texture" id=10]
-[ext_resource path="res://Assets/background/ae/back.png" type="Texture" id=11]
+[ext_resource path="res://Assets/background/ae/bloodback.png" type="Texture" id=11]
 [ext_resource path="res://Assets/background/boss/hands.png" type="Texture" id=12]
 [ext_resource path="res://Assets/enemy/bossssss.png" type="Texture" id=13]
+[ext_resource path="res://Assets/menu/torch/52.png" type="Texture" id=14]
+[ext_resource path="res://Assets/menu/torch/12.png" type="Texture" id=15]
+[ext_resource path="res://Assets/menu/torch/0.png" type="Texture" id=16]
+[ext_resource path="res://Assets/menu/torch/51.png" type="Texture" id=17]
+[ext_resource path="res://Assets/menu/torch/32.png" type="Texture" id=18]
+[ext_resource path="res://Assets/menu/torch/42.png" type="Texture" id=19]
+[ext_resource path="res://Assets/menu/torch/41.png" type="Texture" id=20]
+[ext_resource path="res://Assets/menu/torch/31.png" type="Texture" id=21]
+[ext_resource path="res://Assets/menu/torch/21.png" type="Texture" id=22]
+[ext_resource path="res://Assets/menu/torch/11.png" type="Texture" id=23]
+[ext_resource path="res://Assets/menu/torch/22.png" type="Texture" id=24]
+[ext_resource path="res://Assets/menu/thank.png" type="Texture" id=25]
+[ext_resource path="res://Assets/menu/logo.PNG" type="Texture" id=26]
+[ext_resource path="res://Assets/background/ae/mainback.png" type="Texture" id=27]
+[ext_resource path="res://Assets/background/ae/foodback.png" type="Texture" id=28]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="Animation" id=3]
 resource_name = "default"
@@ -30,6 +53,39 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 506.956, 99.7955 ), Vector2( -487.92, 123.768 ), Vector2( 506.956, 99.7955 ) ]
 }
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 18 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "0",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.8434, 56.3712 )
@@ -53,12 +109,27 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "New Anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="bg" type="Sprite" parent="."]
+[node name="bg" type="AnimatedSprite" parent="."]
 position = Vector2( 960, 540 )
-texture = ExtResource( 11 )
+frames = SubResource( 7 )
 
 [node name="bridge" type="Sprite" parent="bg"]
 position = Vector2( -285.732, 279.383 )
@@ -72,6 +143,12 @@ texture = ExtResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="bg/Sprite2"]
 anims/default = SubResource( 3 )
+
+[node name="torch" type="AnimatedSprite" parent="."]
+position = Vector2( 372.931, 112.303 )
+frames = SubResource( 5 )
+animation = "5"
+playing = true
 
 [node name="Conductor" parent="." instance=ExtResource( 2 )]
 stream = ExtResource( 7 )
@@ -101,7 +178,7 @@ input = "right"
 
 [node name="girl" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 300 )
-frame = 4
+frame = 9
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="girl"]
 
@@ -148,6 +225,21 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/storm = SubResource( 4 )
+
+[node name="thank" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 966, 143.837 )
+z_index = 1
+texture = ExtResource( 25 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="thank"]
+"anims/New Anim" = SubResource( 6 )
+
+[node name="logo" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1818.02, 958.446 )
+scale = Vector2( 0.447769, 0.447769 )
+texture = ExtResource( 26 )
 
 [connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
 [connection signal="finished" from="Conductor" to="." method="_on_Conductor_finished"]

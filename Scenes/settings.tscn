@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://settings.gd" type="Script" id=1]
 [ext_resource path="res://Assets/menu/exit.png" type="Texture" id=2]
 [ext_resource path="res://Assets/menu/back.png" type="Texture" id=3]
+[ext_resource path="res://Assets/enemy/bossssss.png" type="Texture" id=4]
+[ext_resource path="res://Assets/menu/gg.png" type="Texture" id=5]
 
 [node name="settings" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,11 +13,16 @@ script = ExtResource( 1 )
 position = Vector2( 960, 540 )
 texture = ExtResource( 3 )
 
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1638.57, 733.987 )
+scale = Vector2( 0.632433, 0.632433 )
+texture = ExtResource( 5 )
+
 [node name="HSlider" type="HSlider" parent="."]
-margin_left = 806.102
-margin_top = 739.306
-margin_right = 1152.1
-margin_bottom = 988.306
+margin_left = 717.398
+margin_top = 669.408
+margin_right = 1240.4
+margin_bottom = 918.408
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -32,6 +39,11 @@ texture_normal = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 966, 164.234 )
+rotation = 3.14159
+texture = ExtResource( 4 )
 
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

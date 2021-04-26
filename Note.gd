@@ -49,34 +49,21 @@ func initialize(lane):
 	if lane == 0:
 		if !Fade.scene:
 			$AnimatedSprite.play("1")
-			$bos.disabled = true
-			$bos2.disabled = true
-		else: 
-			$AnimatedSprite.play("bl")
-			$bos.disabled = false
-			$bos2.disabled = false
+		else: $AnimatedSprite.play("bl")
 		position = LEFT_LANE_SPAWN
 		speed = DIST_TO_TARGET_LEFT / time
 		left = true
 	elif lane == 1:
 		if !Fade.scene:
 			$AnimatedSprite.play("3")
-
-		else: 
-			$AnimatedSprite.play("2")
-
+		else: $AnimatedSprite.play("2")
 		position = CENTRE_LANE_SPAWN
 		speed = DIST_TO_TARGET_DOWN / time
 		down = true
 	elif lane == 2:
 		if !Fade.scene:
 			$AnimatedSprite.play("4")
-			$bos.disabled = true
-			$bos2.disabled = true
-		else: 
-			$AnimatedSprite.play("br")
-			$bos.disabled = false
-			$bos2.disabled = false
+		else: $AnimatedSprite.play("br")
 		position = RIGHT_LANE_SPAWN
 		speed = DIST_TO_TARGET_RIGHT / time
 		right = true
@@ -111,10 +98,8 @@ func destroy(lane):
 	if lane =="left":
 		if !Fade.scene:
 			$AnimatedSprite.play("1d")
-
 		else: 
 			$AnimatedSprite.play("bld")
-
 	if lane =="up":
 		if !Fade.scene:
 			$AnimatedSprite.play("3d")
@@ -122,10 +107,7 @@ func destroy(lane):
 	if lane =="right":
 		if !Fade.scene:
 			$AnimatedSprite.play("4d")
-
-		else: 
-			$AnimatedSprite.play("brd")
-
+		else: $AnimatedSprite.play("brd")
 	hit = true
 	$Timer.start()
 

@@ -16,14 +16,14 @@
 [ext_resource path="res://Assets/enemy/second/1.png" type="Texture" id=14]
 [ext_resource path="res://Assets/enemy/third/1.png" type="Texture" id=15]
 [ext_resource path="res://Assets/enemy/third/d.png" type="Texture" id=16]
-[ext_resource path="res://Assets/enemy/boss/2.png" type="Texture" id=17]
-[ext_resource path="res://Assets/enemy/boss/dl.png" type="Texture" id=18]
-[ext_resource path="res://Assets/enemy/boss/3.png" type="Texture" id=19]
-[ext_resource path="res://Assets/enemy/boss/d.png" type="Texture" id=20]
-[ext_resource path="res://Assets/enemy/boss/1l.png" type="Texture" id=21]
-[ext_resource path="res://Assets/enemy/boss/2l.png" type="Texture" id=22]
-[ext_resource path="res://Assets/enemy/boss/3l.png" type="Texture" id=23]
-[ext_resource path="res://Assets/enemy/boss/1.png" type="Texture" id=24]
+[ext_resource path="res://Assets/enemy/boss/d/brd.png" type="Texture" id=17]
+[ext_resource path="res://Assets/enemy/boss/d/br1.png" type="Texture" id=18]
+[ext_resource path="res://Assets/enemy/boss/d/br2.png" type="Texture" id=19]
+[ext_resource path="res://Assets/enemy/boss/d/br3.png" type="Texture" id=20]
+[ext_resource path="res://Assets/enemy/boss/d/bl2.png" type="Texture" id=21]
+[ext_resource path="res://Assets/enemy/boss/d/bl1.png" type="Texture" id=22]
+[ext_resource path="res://Assets/enemy/boss/d/bl3.png" type="Texture" id=23]
+[ext_resource path="res://Assets/enemy/boss/d/bld.png" type="Texture" id=24]
 
 [resource]
 animations = [ {
@@ -67,23 +67,28 @@ animations = [ {
 "name": "1",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 22 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "bl",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 19 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 20 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "br",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 18 ) ],
+"frames": [ ExtResource( 24 ) ],
 "loop": true,
 "name": "bld",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ) ],
+"frames": [ ExtResource( 17 ) ],
 "loop": true,
 "name": "brd",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "smoll",
 "speed": 5.0
 } ]

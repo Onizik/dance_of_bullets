@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Dance Of Bullets"
+config/name="DanceOfBullets"
 config/description="Game about a girl and her necofriend which was solen by evil succubus"
 run/main_scene="res://Scenes/menu.tscn"
 config/icon="res://Assets/logo.png"
@@ -23,6 +23,7 @@ Fade="*res://Scenes/Fade.tscn"
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
